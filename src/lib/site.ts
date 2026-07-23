@@ -16,7 +16,7 @@ export const BUSINESS = {
   // Brief.MD wins per Constraints §3 ("Use real number from Brief.MD").
   phoneDisplay: '+63 962 347 3843',
   phoneHref: '+639623473843',
-  email: 'orkha.developments@gmail.com',
+  email: 'orkha.solutions@gmail.com',
   facebook: 'https://www.facebook.com/people/Orkha/61592108671738/',
   address: {
     street: 'Block 3, Lot 30, Adele Residences, Josefine Street',
