@@ -16,7 +16,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Orkha has no clients or case studies yet — why would I be one of the first?",
-    a: "Because being early is the discount. Orkha is in its pilot phase, so the first 5 clients get the founding rate of ₱30,000/month (half of the ₱60,000 standard rate) for their first 3 months, plus every future feature free after 6 months. We're openly pricing in the fact that we're new. Later clients pay full price and don't get that. We're also prepared to overdeliver early so those first results become the case studies we don't have yet.",
+    a: "Because being early is the discount. Orkha is in its pilot phase, so the first 5 clients get the founding rate of ₱30,000/month (half of the ₱60,000 standard rate) for their first 3 months, plus every Future Add-On free, forever, at that locked rate once they stay past month 6. We're openly pricing in the fact that we're new. Later clients pay full price and pay for each add-on individually. We're also prepared to overdeliver early so those first results become the case studies we don't have yet.",
   },
   {
     q: 'Will this actually work for a business like mine?',
@@ -32,7 +32,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'Why should I sign up now instead of waiting?',
-    a: "Orkha's founding rate is ₱30,000/month for your first 3 months versus the ₱60,000 standard rate later, and pilots who stay past month 6 get every future feature we launch included free at their locked rate — later clients pay full add-on price for those. The founding batch is limited to the first 5 clients. Waiting costs you the discount and the free-features window; there's no artificial countdown, just a real cap.",
+    a: "Orkha's founding rate is ₱30,000/month for your first 3 months versus the ₱60,000 standard rate later, and pilots who stay past month 6 get every Future Add-On we launch included free, forever, at their locked rate — later clients pay full price for each one. The founding batch is limited to the first 5 clients. Waiting costs you the discount and the free-add-ons window; there's no artificial countdown, just a real cap.",
   },
   {
     q: "We're already doing fine without this — why change anything?",
@@ -40,11 +40,11 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'What about email, phone, and text inquiries — are those handled too?',
-    a: "Not yet. Right now the system handles social media DMs (Facebook and Instagram) and website form submissions — that's where most missed inquiries actually happen. Email, SMS, and phone inquiries are explicitly out of scope for now and are on the roadmap. We'd rather be straight about coverage than oversell it. (Automated SMS reminders are available as a separate +₱2,000/month add-on.)",
+    a: "Not yet. Right now the system handles Instagram DMs and Facebook Messenger plus website form submissions — that's where most missed inquiries actually happen, and both channels are included at the standard rate. WhatsApp, email, and SMS as inquiry channels sit on our Future Add-Ons list — not sold separately today. We'd rather be straight about coverage than oversell it. Founding clients who stay past month 6 get every Future Add-On free, forever, at their locked rate the moment it ships.",
   },
   {
     q: 'Can Orkha book appointments directly into my calendar?',
-    a: "Not full calendar booking yet — and that's deliberate. Instead of live booking, the AI captures the customer's preferred time block and logs it for you to confirm. That sidesteps double-bookings and timezone mix-ups and keeps you in control of your actual calendar. Direct calendar booking is on the roadmap.",
+    a: "Not full calendar booking yet — and that's deliberate. Instead of live booking, the AI captures the customer's preferred time block and logs it for you to confirm. That sidesteps double-bookings and timezone mix-ups and keeps you in control of your actual calendar. Direct calendar booking is on our Future Add-Ons list — founding clients who stay past month 6 get it free, forever, at their locked rate the moment it ships.",
   },
   {
     q: 'Do I own the website, the customer data, and the inquiries?',
@@ -56,7 +56,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "What's included in the monthly service?",
-    a: "One monthly price covers the whole pipeline: a fully managed, fast website; monthly SEO and GEO (including outreach to newsletters, journalists, directories, and local publications to build off-site credibility); AI that auto-answers and qualifies social media DMs and website form submissions into a Google Sheet you own; Google Business Profile setup and optimization for client sites; and 10 free NFC review cards that send happy customers straight to your Google review page (extra cards ₱20 each, capped at 30/month). Add-ons like automated SMS reminders (+₱2,000/month) are optional.",
+    a: "One monthly price covers the whole pipeline: a fully managed, fast website; monthly SEO and GEO (including outreach to newsletters, journalists, directories, and local publications to build off-site credibility); AI that auto-answers and qualifies Instagram DMs, Facebook Messenger, and website form submissions into a Google Sheet you own; Google Business Profile setup and optimization for client sites; and 10 free NFC review cards that send happy customers straight to your Google review page — extra cards available anytime at ₱20 each, a simple convenience rather than a plan add-on. Everything beyond that base system — SMS reminders, merch handling, multi-branch, reactivation campaigns, more inquiry channels (WhatsApp, email, SMS), calendar booking, and paid ad management — sits on one Future Add-Ons list. None of it is sold separately today; founding clients who stay past month 6 get all of it free, forever, at their locked rate, the moment each one ships.",
   },
   {
     q: 'Is there a lock-in contract?',
