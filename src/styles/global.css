@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ──────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --ink: #1b3c53;
+    --steel: #456882;
+    --cream: #fdf2d4;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    @apply bg-paper text-ink-900 font-sans antialiased;
+    font-feature-settings: 'cv05' 1, 'ss01' 1;
+  }
+
+  /* Tabular figures for all numeric UI — a Sage signature */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display tracking-tight text-balance;
+  }
+
+  a {
+    @apply underline-offset-2;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--steel);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background: var(--ink);
+    color: var(--cream);
+  }
+}
+
+/* ── Reusable components ───────────────────────────────── */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+           transition-all duration-200 no-underline whitespace-nowrap;
+  }
+  .btn-primary {
+    @apply btn bg-ink-800 text-cream-50 hover:bg-ink-900 shadow-card hover:shadow-lift;
+  }
+  .btn-accent {
+    @apply btn bg-cream-100 text-ink-900 hover:bg-cream-200 shadow-card;
+  }
+  .btn-ghost {
+    @apply btn border border-ink-500/30 bg-white/60 text-ink-800 hover:border-ink-500 hover:bg-white;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-ink-500;
+  }
+
+  .card {
+    @apply rounded-xl2 border border-line bg-white shadow-card;
+  }
+
+  .link-underline {
+    @apply text-ink-700 underline decoration-ink-300 decoration-1 underline-offset-4 hover:decoration-ink-700;
+  }
+
+  /* Prose-ish body copy width */
+  .measure {
+    @apply max-w-prose;
+  }
+}
+
+/* ── Motion ────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

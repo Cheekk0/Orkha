@@ -1,0 +1,31 @@
+---
+import { BUSINESS } from '../lib/site';
+interface Props {
+  heading?: string;
+  sub?: string;
+}
+const {
+  heading = 'See the system before you commit to it',
+  sub = "Message our own Facebook page and watch the AI qualify you in real time — the exact system we'd build for you is the one answering you.",
+} = Astro.props;
+---
+
+<section class="container-x my-20">
+  <div class="relative overflow-hidden rounded-xl2 bg-ink-900 px-6 py-14 text-center sm:px-12" data-reveal>
+    <div class="pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true"
+      style="background-image: radial-gradient(circle at 1px 1px, #fdf2d4 1px, transparent 0); background-size: 22px 22px;">
+    </div>
+    <div class="relative mx-auto max-w-2xl">
+      <h2 class="font-display text-3xl font-semibold text-cream-50 sm:text-4xl">{heading}</h2>
+      <p class="mt-4 text-base leading-relaxed text-cream-50/75">{sub}</p>
+      <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <a href={BUSINESS.facebook} target="_blank" rel="noopener" class="btn-accent w-full sm:w-auto">
+          Message the live demo
+        </a>
+        <a href="/contact/" class="btn-ghost w-full border-cream-50/25 bg-transparent text-cream-50 hover:border-cream-50/60 hover:bg-white/5 sm:w-auto">
+          Book a call
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

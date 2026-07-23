@@ -1,0 +1,72 @@
+---
+import Logo from './Logo.astro';
+import { BUSINESS, NAV } from '../lib/site';
+const year = new Date().getFullYear();
+const a = BUSINESS.address;
+---
+
+<footer class="mt-24 border-t border-line bg-ink-900 text-cream-50/90">
+  <div class="container-x grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
+    <div class="max-w-sm">
+      <Logo invert class="mb-4" />
+      <p class="text-sm leading-relaxed text-cream-50/70">
+        A rented, always-on system that catches the customers you're missing — website,
+        continuous SEO/GEO, and AI that answers inquiries the instant they arrive. Built,
+        run, and maintained as one service.
+      </p>
+      <a
+        href={BUSINESS.facebook}
+        target="_blank"
+        rel="noopener"
+        class="mt-5 inline-flex items-center gap-2 text-sm font-medium text-cream-100 underline decoration-cream-100/40 underline-offset-4 hover:decoration-cream-100"
+      >
+        See it working live on our Facebook
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M7 17L17 7M17 7H8M17 7v9" />
+        </svg>
+      </a>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-cream-50/50">Pages</h2>
+      <ul class="space-y-2.5 text-sm">
+        {
+          NAV.map((item) => (
+            <li>
+              <a href={item.href} class="text-cream-50/80 no-underline hover:text-cream-100">
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/privacy/" class="text-cream-50/80 no-underline hover:text-cream-100">Privacy Policy</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="mb-4 text-xs font-semibold uppercase tracking-[0.16em] text-cream-50/50">Contact</h2>
+      <address class="space-y-2.5 text-sm not-italic text-cream-50/80">
+        <p>
+          <a href={`tel:${BUSINESS.phoneHref}`} class="no-underline hover:text-cream-100">{BUSINESS.phoneDisplay}</a>
+        </p>
+        <p>
+          <a href={`mailto:${BUSINESS.email}`} class="break-all no-underline hover:text-cream-100">{BUSINESS.email}</a>
+        </p>
+        <p class="leading-relaxed text-cream-50/60">
+          {a.street},<br />
+          {a.barangay}, {a.city}, {a.region}<br />
+          {a.country}
+        </p>
+      </address>
+    </div>
+  </div>
+
+  <div class="border-t border-cream-50/10">
+    <div class="container-x flex flex-col gap-2 py-6 text-xs text-cream-50/50 sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} {BUSINESS.legalName}. All rights reserved.</p>
+      <p>{BUSINESS.serviceArea}</p>
+    </div>
+  </div>
+</footer>

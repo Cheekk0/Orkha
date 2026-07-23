@@ -1,0 +1,255 @@
+---
+// Signature homepage visual: an inbound message → AI answers & qualifies →
+// the conversation lands as a row in a Google Sheet the owner owns.
+// Built with CSS + a tiny JS state machine. Respects prefers-reduced-motion
+// (shows the completed end-state instead of looping).
+---
+
+<div
+  id="system-flow"
+  data-stage="0"
+  class="flow relative grid gap-4 lg:grid-cols-[1fr_auto_1fr] lg:items-stretch lg:gap-6"
+  aria-label="How the system works: an inbound message is answered and qualified by AI, then logged in a spreadsheet."
+>
+  <!-- ── Panel 1: the inbound conversation ─────────────── -->
+  <div class="card flex flex-col overflow-hidden">
+    <div class="flex items-center gap-2 border-b border-line bg-ink-900 px-4 py-3">
+      <span class="flex gap-1.5" aria-hidden="true">
+        <span class="h-2.5 w-2.5 rounded-full bg-cream-100/30"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-cream-100/30"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-cream-100/30"></span>
+      </span>
+      <span class="ml-1 text-xs font-medium text-cream-50/80">Facebook message · 11:47 PM</span>
+      <span class="ml-auto inline-flex items-center gap-1.5 rounded-full bg-cream-100/15 px-2 py-0.5 text-[10px] font-semibold text-cream-50">
+        <span class="h-1.5 w-1.5 rounded-full bg-emerald-300"></span> Online
+      </span>
+    </div>
+
+    <div class="flex min-h-[280px] flex-1 flex-col gap-3 p-4">
+      <!-- m1 incoming -->
+      <div class="msg m1 flex max-w-[85%] items-end gap-2 self-start">
+        <div class="rounded-2xl rounded-bl-sm bg-ink-800/8 px-3.5 py-2.5 text-sm text-ink-900">
+          Hi, do you have any openings this week? 👀
+        </div>
+      </div>
+
+      <!-- m2 AI reply -->
+      <div class="msg m2 flex max-w-[88%] flex-col gap-1 self-end">
+        <div class="rounded-2xl rounded-br-sm bg-ink-800 px-3.5 py-2.5 text-sm text-cream-50">
+          Hi! Yes 🙌 I can help you get booked. What are you hoping to have done?
+        </div>
+      </div>
+
+      <!-- m3 incoming -->
+      <div class="msg m3 flex max-w-[85%] items-end gap-2 self-start">
+        <div class="rounded-2xl rounded-bl-sm bg-ink-800/8 px-3.5 py-2.5 text-sm text-ink-900">
+          A consultation, ideally Friday afternoon
+        </div>
+      </div>
+
+      <!-- typing indicator (between m3 and m4) -->
+      <div class="typing flex items-center gap-1 self-end rounded-full bg-ink-800/8 px-3 py-2.5" aria-hidden="true">
+        <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+
+      <!-- m4 AI reply (qualifying) -->
+      <div class="msg m4 flex max-w-[90%] flex-col gap-1 self-end">
+        <div class="rounded-2xl rounded-br-sm bg-ink-800 px-3.5 py-2.5 text-sm text-cream-50">
+          Perfect — I've noted <strong>Friday, 1–4 PM</strong>. Can I get your name and a good contact number so the team can confirm?
+        </div>
+        <span class="self-end text-[10px] font-medium text-ink-500">Answered instantly · qualified</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Connector ─────────────────────────────────────── -->
+  <div class="flex items-center justify-center lg:flex-col" aria-hidden="true">
+    <div class="connector relative flex items-center justify-center lg:h-full">
+      <svg class="hidden h-6 w-24 text-ink-300 lg:block" viewBox="0 0 96 24" fill="none">
+        <path d="M2 12h84" stroke="currentColor" stroke-width="2" stroke-dasharray="4 5" stroke-linecap="round" />
+        <path d="M80 5l8 7-8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <svg class="h-8 w-8 rotate-90 text-ink-300 lg:hidden" viewBox="0 0 24 24" fill="none">
+        <path d="M2 12h16m0 0l-6-6m6 6l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span class="pulse absolute h-2.5 w-2.5 rounded-full bg-ink-500"></span>
+    </div>
+  </div>
+
+  <!-- ── Panel 2: the spreadsheet ─────────────────────── -->
+  <div class="card flex flex-col overflow-hidden">
+    <div class="flex items-center gap-2 border-b border-line bg-white px-4 py-3">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="2" fill="#0f9d58" />
+        <path d="M8 8h8M8 12h8M8 16h5" stroke="#fff" stroke-width="1.6" stroke-linecap="round" />
+      </svg>
+      <span class="text-xs font-semibold text-ink-900">Inquiries — Live</span>
+      <span class="ml-auto text-[10px] font-medium text-ink-500">You own this sheet</span>
+    </div>
+
+    <div class="flex-1 overflow-x-auto p-3">
+      <table class="w-full min-w-[380px] border-collapse text-left text-xs tabular">
+        <thead>
+          <tr class="text-ink-500">
+            <th class="border-b border-line px-2 py-2 font-semibold">Time</th>
+            <th class="border-b border-line px-2 py-2 font-semibold">Channel</th>
+            <th class="border-b border-line px-2 py-2 font-semibold">Wants</th>
+            <th class="border-b border-line px-2 py-2 font-semibold">Preferred</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-ink-700">
+            <td class="border-b border-line/60 px-2 py-2">9:02 AM</td>
+            <td class="border-b border-line/60 px-2 py-2">Instagram</td>
+            <td class="border-b border-line/60 px-2 py-2">Pricing</td>
+            <td class="border-b border-line/60 px-2 py-2">Sat AM</td>
+          </tr>
+          <tr class="text-ink-700">
+            <td class="border-b border-line/60 px-2 py-2">6:35 PM</td>
+            <td class="border-b border-line/60 px-2 py-2">Web form</td>
+            <td class="border-b border-line/60 px-2 py-2">Follow-up</td>
+            <td class="border-b border-line/60 px-2 py-2">Weekday</td>
+          </tr>
+          <!-- the row that lands -->
+          <tr class="new-row text-ink-900">
+            <td class="border-b border-line/60 px-2 py-2 font-semibold">11:47 PM</td>
+            <td class="border-b border-line/60 px-2 py-2">Facebook</td>
+            <td class="border-b border-line/60 px-2 py-2">Consultation</td>
+            <td class="border-b border-line/60 px-2 py-2">Fri 1–4 PM</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p class="new-note mt-3 flex items-center gap-1.5 px-2 text-[11px] font-medium text-emerald-700">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        Captured while the shop was closed
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Everything starts hidden; JS reveals stage by stage on a loop. */
+  .flow .msg,
+  .flow .typing,
+  .flow .new-row,
+  .flow .new-note {
+    opacity: 0;
+  }
+  .flow .msg {
+    transform: translateY(8px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .flow .typing,
+  .flow .new-note {
+    transition: opacity 0.3s ease;
+  }
+
+  /* Progressive message reveals */
+  .flow[data-stage='1'] .m1 { opacity: 1; transform: none; }
+
+  .flow[data-stage='2'] .m1,
+  .flow[data-stage='2'] .m2 { opacity: 1; transform: none; }
+
+  .flow[data-stage='3'] .m1,
+  .flow[data-stage='3'] .m2,
+  .flow[data-stage='3'] .m3 { opacity: 1; transform: none; }
+  .flow[data-stage='3'] .typing { opacity: 1; }
+
+  .flow[data-stage='4'] .m1,
+  .flow[data-stage='4'] .m2,
+  .flow[data-stage='4'] .m3,
+  .flow[data-stage='4'] .m4 { opacity: 1; transform: none; }
+
+  .flow[data-stage='5'] .msg { opacity: 1; transform: none; }
+  .flow[data-stage='5'] .new-row { opacity: 1; animation: rowIn 0.5s ease both; }
+  .flow[data-stage='5'] .new-row td:first-child { box-shadow: inset 3px 0 0 #1b3c53; }
+  .flow[data-stage='5'] .new-note { opacity: 1; }
+
+  .typing .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 9999px;
+    background: #456882;
+    display: inline-block;
+    animation: blink 1.2s infinite ease-in-out;
+  }
+  .typing .dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing .dot:nth-child(3) { animation-delay: 0.4s; }
+
+  .pulse { animation: pulse 1.8s infinite ease-out; }
+
+  @keyframes rowIn {
+    from { opacity: 0; transform: translateY(-10px); background: rgba(253, 242, 212, 0.6); }
+    to { opacity: 1; transform: none; background: transparent; }
+  }
+  @keyframes blink {
+    0%, 60%, 100% { opacity: 0.25; transform: translateY(0); }
+    30% { opacity: 1; transform: translateY(-2px); }
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.6); opacity: 0.9; }
+    70% { transform: scale(2.4); opacity: 0; }
+    100% { opacity: 0; }
+  }
+
+  /* Reduced motion: reveal the completed state, no looping. */
+  @media (prefers-reduced-motion: reduce) {
+    .flow .msg,
+    .flow .new-row,
+    .flow .new-note {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+    }
+    .flow .new-row td:first-child { box-shadow: inset 3px 0 0 #1b3c53; }
+    .flow .typing { display: none; }
+    .pulse { animation: none; opacity: 0.6; }
+  }
+</style>
+
+<script>
+  const flow = document.getElementById('system-flow');
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (flow && !reduce) {
+    // [stage, dwell-ms]. Stage 0 is a short reset before looping again.
+    const steps: [number, number][] = [
+      [1, 1100],
+      [2, 1300],
+      [3, 1200],
+      [4, 2600],
+      [5, 2800],
+      [0, 450],
+    ];
+    let i = 0;
+    let timer: number | null = null;
+
+    const tick = () => {
+      const [stage, dwell] = steps[i % steps.length];
+      flow.setAttribute('data-stage', String(stage));
+      i++;
+      timer = window.setTimeout(tick, dwell);
+    };
+
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting && timer === null) {
+            tick();
+          } else if (!e.isIntersecting && timer !== null) {
+            clearTimeout(timer);
+            timer = null;
+          }
+        });
+      });
+      io.observe(flow);
+    } else {
+      tick();
+    }
+  } else if (flow) {
+    flow.setAttribute('data-stage', '5');
+  }
+</script>

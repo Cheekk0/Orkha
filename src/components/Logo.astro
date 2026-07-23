@@ -1,0 +1,27 @@
+---
+interface Props {
+  variant?: 'full' | 'mark';
+  class?: string;
+  invert?: boolean;
+}
+const { variant = 'full', class: className = '', invert = false } = Astro.props;
+const wordColor = invert ? 'text-cream-50' : 'text-ink-800';
+---
+
+<span class={`inline-flex items-center gap-2.5 ${className}`}>
+  <img
+    src="/brand/orkha-mark.png"
+    alt="Orkha logo"
+    width="40"
+    height="40"
+    class="h-9 w-9 shrink-0 object-contain"
+    loading="eager"
+  />
+  {
+    variant === 'full' && (
+      <span class={`font-display text-xl font-semibold tracking-tight ${wordColor}`}>
+        Orkha
+      </span>
+    )
+  }
+</span>

@@ -1,0 +1,83 @@
+---
+import Logo from './Logo.astro';
+import { NAV } from '../lib/site';
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header class="sticky top-0 z-50 border-b border-line/80 bg-paper/85 backdrop-blur-md">
+  <div class="container-x flex h-16 items-center justify-between gap-4">
+    <a href="/" class="no-underline" aria-label="Orkha — home">
+      <Logo />
+    </a>
+
+    <nav class="hidden items-center gap-1 md:flex" aria-label="Primary">
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class={`rounded-full px-4 py-2 text-sm font-medium no-underline transition-colors ${
+              isActive(item.href)
+                ? 'bg-ink-800/8 text-ink-900'
+                : 'text-ink-600 hover:bg-ink-800/5 hover:text-ink-900'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="hidden md:block">
+      <a href="/contact/" class="btn-primary">Book a call</a>
+    </div>
+
+    <button
+      id="nav-toggle"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-lg text-ink-800 md:hidden"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-nav"
+    >
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile nav -->
+  <div id="mobile-nav" class="hidden border-t border-line bg-paper md:hidden">
+    <nav class="container-x flex flex-col gap-1 py-4" aria-label="Mobile">
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class={`rounded-lg px-4 py-3 text-base font-medium no-underline ${
+              isActive(item.href) ? 'bg-ink-800/8 text-ink-900' : 'text-ink-700'
+            }`}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/contact/" class="btn-primary mt-2 w-full">Book a call</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-nav');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const open = menu.classList.toggle('hidden') === false;
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    });
+  }
+</script>

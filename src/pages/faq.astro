@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE_URL } from '../lib/site';
+import { FAQS } from '../lib/faqs';
+
+const title = 'FAQ | Orkha';
+const description =
+  'Straight answers on pricing, what\'s included, how the system works, and what happens if you leave. No fine-print games.';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL + '/' },
+    { '@type': 'ListItem', position: 2, name: 'FAQ', item: SITE_URL + '/faq/' },
+  ],
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Base title={title} description={description} path="/faq/" schema={[breadcrumb, faqSchema]}>
+  <section class="container-x pt-16 pb-10">
+    <div class="max-w-3xl" data-reveal>
+      <p class="eyebrow">FAQ</p>
+      <h1 class="mt-4 font-display text-4xl font-semibold text-ink-900 sm:text-5xl">
+        Questions, answered straight
+      </h1>
+      <p class="mt-5 max-w-prose text-lg leading-relaxed text-ink-600">
+        The honest version of everything owners actually ask before signing — pricing, scope,
+        ownership, and what happens if you decide to leave.
+      </p>
+    </div>
+  </section>
+
+  <section class="container-x pb-12">
+    <div class="max-w-3xl" data-reveal>
+      <FaqAccordion items={FAQS} />
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Still have a question?"
+    sub="Ask it the fastest way there is — message our Facebook page and watch the AI answer you in real time."
+  />
+</Base>

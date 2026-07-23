@@ -1,0 +1,43 @@
+---
+// GoHighLevel inline lead form — embed code fixed by Constraints.MD §3.
+// Do not alter the iframe src / ids. Appears on Home, Pricing, Contact.
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<div class={`ghl-form overflow-hidden rounded-xl2 border border-line bg-white shadow-card ${className}`}>
+  <iframe
+    src="https://api.leadconnectorhq.com/widget/form/cy5siH9fX2d3py6UfGvl"
+    style="width:100%;height:100%;border:none;border-radius:8px"
+    id="inline-cy5siH9fX2d3py6UfGvl"
+    data-layout="{'id':'INLINE'}"
+    data-trigger-type="alwaysShow"
+    data-trigger-value=""
+    data-activation-type="alwaysActivated"
+    data-activation-value=""
+    data-deactivation-type="neverDeactivate"
+    data-deactivation-value=""
+    data-form-name="Website Lead Form"
+    data-height="967"
+    data-layout-iframe-id="inline-cy5siH9fX2d3py6UfGvl"
+    data-form-id="cy5siH9fX2d3py6UfGvl"
+    title="Website Lead Form"
+    loading="lazy"
+  >
+  </iframe>
+</div>
+
+<!-- GHL resizer script — loads once per page. `is:inline` keeps the external src intact. -->
+<script src="https://link.msgsndr.com/js/form_embed.js" is:inline></script>
+
+<style>
+  .ghl-form {
+    min-height: 640px;
+  }
+  .ghl-form iframe {
+    min-height: 640px;
+    display: block;
+  }
+</style>

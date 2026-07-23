@@ -1,0 +1,65 @@
+---
+import { SITE_URL, BUSINESS } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Path only, e.g. "/pricing/". Leading slash required. */
+  path: string;
+  /** Absolute or root-relative image for social share. */
+  ogImage?: string;
+  noindex?: boolean;
+  /** Any JSON-LD objects to inject into <head>. */
+  schema?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  path,
+  ogImage = '/brand/orkha-wordmark.png',
+  noindex = false,
+  schema = [],
+} = Astro.props;
+
+const canonical = new URL(path, SITE_URL).href;
+const ogImageAbs = new URL(ogImage, SITE_URL).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Open Graph -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content={BUSINESS.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageAbs} />
+<meta property="og:locale" content="en_PH" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageAbs} />
+
+<!-- Icons -->
+<link rel="icon" type="image/png" href="/brand/orkha-icon.png" />
+<link rel="apple-touch-icon" href="/brand/orkha-icon.png" />
+<meta name="theme-color" content="#1b3c53" />
+
+<!-- Structured data -->
+{
+  schema.map((obj) => (
+    <script type="application/ld+json" set:html={JSON.stringify(obj)} />
+  ))
+}
+
+<!-- TODO: Add analytics tag here when chosen (none yet, per Constraints §3). -->

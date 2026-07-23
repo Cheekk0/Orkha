@@ -1,0 +1,330 @@
+---
+import Base from '../layouts/Base.astro';
+import SystemFlow from '../components/SystemFlow.astro';
+import Calculator from '../components/Calculator.astro';
+import StatStrip from '../components/StatStrip.astro';
+import CtaBand from '../components/CtaBand.astro';
+import GhlForm from '../components/GhlForm.astro';
+import { SITE_URL, BUSINESS, TIMEFRAME } from '../lib/site';
+
+const title = 'Website + AI That Catches Every Inquiry | Orkha';
+const description =
+  'We build and run the website + AI that answers every inquiry, even after hours — so you stop losing customers you never saw. Watch it work live on our Facebook page.';
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Managed website + AI inquiry-capture system',
+  serviceType: 'Website, SEO/GEO, and AI inquiry automation',
+  provider: { '@id': `${SITE_URL}/#organization` },
+  areaServed: { '@type': 'Country', name: 'Philippines' },
+  description:
+    'A fully managed website with continuous SEO and GEO, plus AI that answers and qualifies social media messages and website form submissions 24/7, logging every inquiry into a Google Sheet the client owns.',
+  offers: {
+    '@type': 'Offer',
+    priceCurrency: 'PHP',
+    price: '30000',
+    priceSpecification: {
+      '@type': 'UnitPriceSpecification',
+      priceCurrency: 'PHP',
+      price: '30000',
+      unitText: 'MONTH',
+    },
+    availability: 'https://schema.org/InStock',
+    url: `${SITE_URL}/pricing/`,
+  },
+};
+
+// Small inline icons for the "how it works" cards.
+const icons: Record<string, string> = {
+  clock:
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  filter:
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5Z" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  sheet:
+    '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 3v18" stroke-linecap="round"/></svg>',
+};
+const icon = (name: string) => icons[name] ?? '';
+
+const features = [
+  {
+    title: 'Answered the instant it arrives',
+    body: "Most inquiries land when you're closed or busy — evenings, weekends, mid-appointment. The AI replies and qualifies within seconds, so an 11 PM message isn't a customer lost by morning.",
+    icon: 'clock',
+  },
+  {
+    title: 'Qualified before it reaches you',
+    body: 'The AI asks the right questions first, so by the time a conversation reaches you, you already know what they want and whether they fit. Less time sorting tyre-kickers from real customers.',
+    icon: 'filter',
+  },
+  {
+    title: 'One place, nothing to chase',
+    body: 'Every conversation — DMs and form fills — lands in a single Google Sheet you own. No hopping between Facebook, inbox and sticky notes. One tab, everything visible.',
+    icon: 'sheet',
+  },
+];
+
+const offer = [
+  {
+    title: 'A fast, findable website',
+    body: 'Fully static and near-instant to load — because every extra second of load time is someone leaving before they reach your contact form. Built so both Google and AI assistants can actually read and recommend you.',
+  },
+  {
+    title: 'Continuous SEO & GEO',
+    body: "Not a one-time setup that decays. We keep your site optimised and reach out to newsletters, directories and local publications, so when a customer or an AI cross-checks you, there's something to find.",
+  },
+  {
+    title: 'AI that answers 24/7',
+    body: 'Auto-answers and qualifies social media DMs and website form submissions, captures a preferred time block, and routes every conversation into a Google Sheet you own and watch in real time.',
+  },
+  {
+    title: 'Google Business Profile',
+    body: 'We set up and optimise your Google Business Profile so you show up in Maps and local search with accurate details — and it strengthens over time as reviews come in.',
+  },
+  {
+    title: '10 free NFC review cards',
+    body: 'Tap-to-review cards that send happy customers straight to your Google review page — turning good visits into reviews on the spot. Extra cards ₱20 each, capped at 30/month.',
+  },
+  {
+    title: 'Built, run and maintained',
+    body: `One team accountable for the whole pipeline — not parts you assemble yourself. The full system is live in ${TIMEFRAME}, then it just keeps running.`,
+  },
+];
+---
+
+<Base title={title} description={description} path="/" schema={[serviceSchema]}>
+  <!-- ── Hero ─────────────────────────────────────────── -->
+  <section class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-0 -z-10 opacity-70"
+      aria-hidden="true"
+      style="background: radial-gradient(60% 60% at 15% 0%, rgba(69,104,130,0.12), transparent 60%), radial-gradient(50% 50% at 100% 20%, rgba(253,242,212,0.5), transparent 55%);"
+    >
+    </div>
+
+    <div class="container-x grid items-center gap-12 py-16 lg:grid-cols-[1fr_1.05fr] lg:py-24">
+      <div>
+        <p class="eyebrow">
+          <span class="inline-block h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+          Live pilot · founding clients now
+        </p>
+        <h1 class="mt-5 font-display text-4xl font-semibold leading-[1.05] text-ink-900 sm:text-5xl lg:text-6xl">
+          The system that catches the customers you're&nbsp;missing
+        </h1>
+        <p class="measure mt-6 text-lg leading-relaxed text-ink-600">
+          You're busy doing the actual work — and inquiries slip through the cracks. Orkha builds
+          and runs the website plus the AI that answers and qualifies every message the moment it
+          arrives, even after hours, and logs each one in a sheet you own.
+        </p>
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          <a href="/contact/" class="btn-primary">Book a call</a>
+          <a href={BUSINESS.facebook} target="_blank" rel="noopener" class="btn-ghost">
+            Message the live demo
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M7 17L17 7M17 7H8M17 7v9" />
+            </svg>
+          </a>
+        </div>
+        <p class="mt-5 text-sm text-ink-500">
+          Month-to-month, no lock-in · Live in {TIMEFRAME} · You own the site and the data
+        </p>
+      </div>
+
+      <div data-reveal>
+        <SystemFlow />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The invisible leak ───────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="max-w-prose" data-reveal>
+      <p class="eyebrow">The problem</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900 sm:text-4xl">
+        You're doing fine on the inquiries you can see
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-600">
+        It's the ones you can't that cost you. The message that came in at 10 PM. The DM while you
+        were with a client. The weekend enquiry that gave up before Monday. Right now there's no way
+        to know how many there were — which is exactly the problem.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      {
+        [
+          { stat: '52%', label: 'of inquiries arrive outside normal business hours.', src: 'HubSpot' },
+          { stat: '78%', label: 'of customers buy from whoever responds first.', src: 'Lead Connect, 2024' },
+          { stat: '42 hrs', label: 'average response time to a web inquiry — 23% never reply.', src: 'HBR, 2011' },
+        ].map((c) => (
+          <div class="card p-6" data-reveal>
+            <p class="font-display text-4xl font-semibold text-ink-800 tabular">{c.stat}</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink-700">{c.label}</p>
+            <p class="mt-3 text-[11px] text-ink-500">{c.src}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ── How it works ─────────────────────────────────── -->
+  <section class="bg-ink-900 py-20 text-cream-50">
+    <div class="container-x">
+      <div class="max-w-prose" data-reveal>
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-cream-50/50">How it works</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+          One system, three moving parts
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-cream-50/70">
+          A message comes in. The AI answers and qualifies it in seconds. It lands in a sheet you
+          own. Every time — day or night.
+        </p>
+      </div>
+
+      <div class="mt-12 grid gap-6 md:grid-cols-3">
+        {
+          features.map((f, i) => (
+            <div class="rounded-xl2 border border-cream-50/10 bg-white/5 p-7" data-reveal>
+              <div class="flex items-center gap-3">
+                <span class="grid h-11 w-11 place-items-center rounded-xl bg-cream-100 text-ink-900">
+                  <Fragment set:html={icon(f.icon)} />
+                </span>
+                <span class="font-display text-lg font-semibold text-cream-50/40">0{i + 1}</span>
+              </div>
+              <h3 class="mt-5 font-display text-xl font-semibold text-cream-50">{f.title}</h3>
+              <p class="mt-2 text-sm leading-relaxed text-cream-50/70">{f.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What's included ──────────────────────────────── -->
+  <section class="container-x py-20">
+    <div class="max-w-prose" data-reveal>
+      <p class="eyebrow">What you're renting</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900 sm:text-4xl">
+        Not a website. A working system.
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-600">
+        The freelancer builds you a brochure and disappears. We run one accountable pipeline —
+        website, ongoing optimisation and always-on AI — and keep it working every day.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+      {
+        offer.map((o) => (
+          <div class="card flex flex-col p-6" data-reveal>
+            <h3 class="font-display text-lg font-semibold text-ink-900">{o.title}</h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-600">{o.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-8">
+      <a href="/pricing/" class="link-underline text-sm font-semibold">See exactly what's included and what it costs →</a>
+    </div>
+  </section>
+
+  <!-- ── NFC review cards ─────────────────────────────── -->
+  <section class="container-x pb-4">
+    <div class="card grid items-center gap-8 overflow-hidden p-6 sm:p-8 md:grid-cols-[1fr_1fr] md:gap-10" data-reveal>
+      <div>
+        <p class="eyebrow">Included · 10 free cards</p>
+        <h2 class="mt-3 font-display text-2xl font-semibold text-ink-900 sm:text-3xl">
+          Turn happy customers into Google reviews on the spot
+        </h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-600">
+          We design and program 10 NFC cards. A customer taps one with their phone and lands straight
+          on your Google review page — no searching, no friction. More reviews strengthen your Google
+          Business Profile, which is exactly what search and AI check before recommending you.
+        </p>
+        <p class="mt-3 text-sm text-ink-500">Extra cards ₱20 each, capped at 30/month.</p>
+      </div>
+      <div class="flex justify-center">
+        <img
+          src="/brand/nfc-review-cards.webp"
+          alt="Orkha NFC Google review cards that customers tap to leave a review"
+          width="520"
+          height="360"
+          loading="lazy"
+          class="w-full max-w-md rounded-xl2 object-contain"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Research strip ───────────────────────────────── -->
+  <section class="container-x py-8">
+    <div class="max-w-prose" data-reveal>
+      <p class="eyebrow">Why speed matters</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900 sm:text-4xl">
+        The first to respond usually wins
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-600">
+        Most businesses are dramatically too slow to reply. An AI that answers instantly puts you on
+        the winning side of that gap automatically — even when you physically can't be at your phone.
+        The research is about the principle, not a promise about your specific numbers.
+      </p>
+    </div>
+    <div class="mt-10">
+      <StatStrip />
+    </div>
+  </section>
+
+  <!-- ── Calculator ───────────────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="mb-10 max-w-prose" data-reveal>
+      <p class="eyebrow">A conversation starter</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900 sm:text-4xl">
+        Put a rough number on what's slipping through
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-ink-600">
+        This estimator applies broad industry averages to your own figures. It's illustrative, not a
+        prediction — a way to make the invisible leak visible enough to talk about.
+      </p>
+    </div>
+    <Calculator />
+  </section>
+
+  <!-- ── Live proof ───────────────────────────────────── -->
+  <CtaBand />
+
+  <!-- ── Form ─────────────────────────────────────────── -->
+  <section class="container-x pb-8">
+    <div class="grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div data-reveal>
+        <p class="eyebrow">Start the conversation</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900 sm:text-4xl">
+          Tell us about your business
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-ink-600">
+          A few details and we'll show you how the system would work for you. And notice how fast we
+          reply — that's the system you'd be getting, running on us.
+        </p>
+        <ul class="mt-6 space-y-3 text-sm text-ink-700">
+          {
+            [
+              'Month-to-month — leave whenever you like',
+              `Fully live in ${TIMEFRAME}`,
+              'You own the website, the domain and the data',
+            ].map((li) => (
+              <li class="flex items-start gap-2.5">
+                <svg class="mt-0.5 shrink-0 text-ink-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {li}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div data-reveal>
+        <GhlForm />
+      </div>
+    </div>
+  </section>
+</Base>

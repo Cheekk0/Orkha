@@ -1,0 +1,230 @@
+---
+import Base from '../layouts/Base.astro';
+import GhlForm from '../components/GhlForm.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE_URL, TIMEFRAME } from '../lib/site';
+
+const title = 'Pricing & Plans | Orkha';
+const description =
+  'One system, one monthly price — website, SEO, and AI inquiry capture, fully managed. Founding-client rates available now, month-to-month with no lock-in.';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL + '/' },
+    { '@type': 'ListItem', position: 2, name: 'Pricing', item: SITE_URL + '/pricing/' },
+  ],
+};
+
+const included = [
+  'Fully managed, fast static website',
+  'Monthly SEO + GEO (incl. directory & publication outreach)',
+  'AI that answers & qualifies DMs and form submissions 24/7',
+  'Every conversation routed to a Google Sheet you own',
+  'Google Business Profile setup & optimisation',
+  '10 free NFC review cards (extra at ₱20 each, max 30/mo)',
+  'Hosting, maintenance & updates',
+  `Fully live in ${TIMEFRAME}`,
+];
+
+const addons = [
+  { name: 'Automated SMS reminders', price: '+₱2,000 / mo' },
+  { name: 'Physical merch & product handling', price: '+₱500 / mo' },
+  { name: 'Multi-branch (per branch above 3)', price: '+₱2,000 / mo' },
+];
+
+const compare = [
+  { row: 'Monthly rate', now: '₱30,000 (first 3 months)', later: '₱60,000' },
+  { row: 'Founding batch', now: 'First 5 clients only', later: 'Standard pricing' },
+  { row: 'Future features after month 6', now: 'Free, forever, at your locked rate', later: 'Paid add-ons' },
+  { row: 'Lock-in', now: 'None — month-to-month', later: 'None — month-to-month' },
+];
+---
+
+<Base title={title} description={description} path="/pricing/" schema={[breadcrumb]}>
+  <section class="container-x pt-14 pb-6">
+    <div class="mx-auto max-w-3xl text-center" data-reveal>
+      <p class="eyebrow justify-center">Pricing</p>
+      <h1 class="mt-4 font-display text-4xl font-semibold text-ink-900 sm:text-5xl">
+        One system, one monthly price
+      </h1>
+      <!-- Recap for anyone landing here directly -->
+      <p class="mx-auto mt-5 max-w-prose text-lg leading-relaxed text-ink-600">
+        Orkha builds and runs an always-on system for appointment-driven service businesses: a fast,
+        findable website, continuous SEO and GEO, and AI that answers and qualifies your messages
+        24/7 — every conversation logged in a Google Sheet you own. Not a website you buy once; a
+        working system you rent, maintained every day.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Plan cards ───────────────────────────────────── -->
+  <section class="container-x pb-4">
+    <div class="grid gap-6 lg:grid-cols-2">
+      <!-- Founding -->
+      <div class="relative overflow-hidden rounded-xl2 border-2 border-ink-800 bg-white p-8 shadow-lift" data-reveal>
+        <span class="absolute right-6 top-6 rounded-full bg-cream-100 px-3 py-1 text-xs font-semibold text-ink-900">
+          Pilot phase · 50% off
+        </span>
+        <p class="eyebrow">Founding batch</p>
+        <div class="mt-4 flex items-end gap-2">
+          <span class="font-display text-5xl font-semibold text-ink-900 tabular">₱30,000</span>
+          <span class="mb-1.5 text-sm text-ink-500">/ month</span>
+        </div>
+        <p class="mt-2 text-sm text-ink-600">
+          For your <strong>first 3 months</strong>, then ₱60,000/month. Offered to the first
+          <strong>5 clients</strong> only, while we're in our pilot phase.
+        </p>
+        <ul class="mt-6 space-y-2.5">
+          {
+            included.map((li) => (
+              <li class="flex items-start gap-2.5 text-sm text-ink-700">
+                <svg class="mt-0.5 shrink-0 text-ink-600" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {li}
+              </li>
+            ))
+          }
+        </ul>
+        <a href="/contact/" class="btn-primary mt-8 w-full">Claim a founding slot</a>
+        <p class="mt-4 text-xs leading-relaxed text-ink-500">
+          Payable in two installments each month — one at sign-on, the second after two weeks. Stay
+          past month 6 and every feature we launch afterward is included free, forever, at your
+          locked rate.
+        </p>
+      </div>
+
+      <!-- Standard -->
+      <div class="rounded-xl2 border border-line bg-paper p-8" data-reveal>
+        <p class="eyebrow">Standard</p>
+        <div class="mt-4 flex items-end gap-2">
+          <span class="font-display text-5xl font-semibold text-ink-800 tabular">₱60,000</span>
+          <span class="mb-1.5 text-sm text-ink-500">/ month</span>
+        </div>
+        <p class="mt-2 text-sm text-ink-600">
+          Ongoing, month-to-month, no long-term lock-in. The full system, maintained — this is the
+          rate once the founding batch closes.
+        </p>
+        <ul class="mt-6 space-y-2.5">
+          {
+            included.map((li) => (
+              <li class="flex items-start gap-2.5 text-sm text-ink-700">
+                <svg class="mt-0.5 shrink-0 text-ink-500" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {li}
+              </li>
+            ))
+          }
+        </ul>
+        <a href="/contact/" class="btn-ghost mt-8 w-full">Book a call</a>
+        <p class="mt-4 text-xs leading-relaxed text-ink-500">
+          Same system, same accountability. The founding rate simply prices in the fact that we're
+          new — later clients pay this.
+        </p>
+      </div>
+    </div>
+
+    <p class="mt-6 text-center text-sm text-ink-500">
+      Every plan is month-to-month with no lock-in — you can leave the moment it stops earning its keep.
+    </p>
+  </section>
+
+  <!-- ── Add-ons ──────────────────────────────────────── -->
+  <section class="container-x py-14">
+    <div class="grid gap-8 lg:grid-cols-[1fr_1.2fr]">
+      <div data-reveal>
+        <p class="eyebrow">Optional add-ons</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900">Add only what you need</h2>
+        <p class="mt-3 text-base leading-relaxed text-ink-600">
+          The monthly price covers the full system. These are extras you can switch on when they're
+          useful — not gates on the core service.
+        </p>
+      </div>
+      <div class="card divide-y divide-line" data-reveal>
+        {
+          addons.map((a) => (
+            <div class="flex items-center justify-between gap-4 px-6 py-5">
+              <span class="text-sm font-medium text-ink-800">{a.name}</span>
+              <span class="tabular shrink-0 text-sm font-semibold text-ink-700">{a.price}</span>
+            </div>
+          ))
+        }
+        <div class="px-6 py-5 text-xs leading-relaxed text-ink-500">
+          When paid advertising (Meta / Google) launches later, ad spend is never included — you pay
+          your own ad spend on top of the service fee, always.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Now vs later ─────────────────────────────────── -->
+  <section class="container-x py-6">
+    <div class="max-w-prose" data-reveal>
+      <p class="eyebrow">Now vs later</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900">Why being early is the discount</h2>
+      <p class="mt-3 text-base leading-relaxed text-ink-600">
+        The founding batch isn't a fake countdown — it's a real cap of 5 clients. Here's exactly
+        what the timing changes.
+      </p>
+    </div>
+
+    <div class="mt-8 overflow-x-auto" data-reveal>
+      <table class="w-full min-w-[560px] border-collapse overflow-hidden rounded-xl2 border border-line bg-white text-left text-sm">
+        <thead>
+          <tr class="bg-paper">
+            <th class="border-b border-line px-5 py-4 font-semibold text-ink-500"></th>
+            <th class="border-b border-line px-5 py-4 font-display text-base font-semibold text-ink-900">
+              Founding client (now)
+            </th>
+            <th class="border-b border-line px-5 py-4 font-display text-base font-semibold text-ink-500">
+              Later
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            compare.map((c) => (
+              <tr>
+                <td class="border-b border-line/70 px-5 py-4 font-medium text-ink-700">{c.row}</td>
+                <td class="border-b border-line/70 px-5 py-4 font-semibold text-ink-900">{c.now}</td>
+                <td class="border-b border-line/70 px-5 py-4 text-ink-500">{c.later}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-6 max-w-prose text-sm leading-relaxed text-ink-500">
+      Prices reflect the full managed system and are shown as written — no hidden tiers. If your
+      situation is unusual, talk to us; there's room to work something out.
+    </p>
+  </section>
+
+  <!-- ── Form ─────────────────────────────────────────── -->
+  <section class="container-x py-14">
+    <div class="grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
+      <div data-reveal>
+        <p class="eyebrow">Ready when you are</p>
+        <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900 sm:text-4xl">
+          Lock in the founding rate
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-ink-600">
+          Tell us about your business and we'll walk you through exactly how the system would work —
+          and how fast we'd have it live. Watch how quickly we reply; that's the product.
+        </p>
+      </div>
+      <div data-reveal>
+        <GhlForm />
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    heading="Still deciding? Watch it work first."
+    sub="Message our own Facebook page and let the AI qualify you in real time — the exact system you'd be paying for, running on us."
+  />
+</Base>

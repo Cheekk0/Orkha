@@ -1,0 +1,150 @@
+---
+import Base from '../layouts/Base.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { SITE_URL, BUSINESS } from '../lib/site';
+
+const title = 'About Orkha | Who We Are';
+const description =
+  'Orkha runs the exact same inquiry-capture system we sell — see it working live on our Facebook page. No borrowed credibility, just the product doing its job.';
+
+const breadcrumb = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE_URL + '/' },
+    { '@type': 'ListItem', position: 2, name: 'About', item: SITE_URL + '/about/' },
+  ],
+};
+
+const beliefs = [
+  {
+    title: 'We show our working',
+    body: "The purchase is considered and the market is full of pretty-but-dead websites. So we explain before we ask — what the system does, what it doesn't, and why. No superlatives we can't back, no numbers we didn't earn.",
+  },
+  {
+    title: 'Verifiable over promised',
+    body: 'We have no case studies yet, and we say so plainly. Instead of borrowed credibility, we point you at the live system: message our Facebook page and watch the AI qualify you. Proof you can check beats a testimonial you can\'t.',
+  },
+  {
+    title: 'You hold the risk cap',
+    body: "Month-to-month, no lock-in, and you own the website, domain and data. If we stop earning our keep, you walk — that's the whole point. It keeps us honest and keeps the system proving itself every month.",
+  },
+];
+
+const who = [
+  'Dental, derma and medical clinics',
+  'Physiotherapy & rehab',
+  'Law & accounting practices',
+  'High-ticket home services (custom HVAC, solar)',
+];
+---
+
+<Base title={title} description={description} path="/about/" schema={[breadcrumb]}>
+  <section class="container-x pt-16 pb-10">
+    <div class="max-w-3xl" data-reveal>
+      <p class="eyebrow">About Orkha</p>
+      <h1 class="mt-4 font-display text-4xl font-semibold text-ink-900 sm:text-5xl">
+        We built the system we wanted to sell
+      </h1>
+
+      <!-- Entity facts, stated plainly (GEO §6) -->
+      <p class="mt-6 text-lg leading-relaxed text-ink-600">
+        Orkha is a digital service business founded in {BUSINESS.foundedYear}, based in
+        {' '}{BUSINESS.address.city}, {BUSINESS.address.region}, and serving appointment-driven
+        service businesses across the Philippines. We build and run one integrated system — a fast,
+        findable website, continuous SEO and GEO, and AI that answers and qualifies inquiries 24/7 —
+        for owner-professionals whose own time is the bottleneck.
+      </p>
+      <p class="mt-4 text-lg leading-relaxed text-ink-600">
+        We're a small team that wants to help business owners stop losing customers they never saw.
+        We're new, and we're upfront about it — which is exactly why the earliest clients get the
+        founding rate and features later clients won't.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── Dogfooding proof ─────────────────────────────── -->
+  <section class="bg-ink-900 py-16 text-cream-50">
+    <div class="container-x grid items-center gap-10 lg:grid-cols-2">
+      <div data-reveal>
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-cream-50/50">
+          Proof no testimonial can match
+        </p>
+        <h2 class="mt-3 font-display text-3xl font-semibold sm:text-4xl">We run it on ourselves</h2>
+        <p class="mt-4 text-lg leading-relaxed text-cream-50/75">
+          This exact system runs our own business — we find our own clients through it. That's not a
+          claim you have to trust; it's one you can check. Message our Facebook page and watch the
+          same AI we'd build for you answer and qualify you in real time, before you commit to
+          anything.
+        </p>
+        <a href={BUSINESS.facebook} target="_blank" rel="noopener" class="btn-accent mt-7">
+          Message the live demo
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M7 17L17 7M17 7H8M17 7v9" />
+          </svg>
+        </a>
+      </div>
+      <div class="rounded-xl2 border border-cream-50/10 bg-white/5 p-8" data-reveal>
+        <blockquote class="font-display text-2xl font-medium leading-snug text-cream-50">
+          “The thing selling you is the thing we'd build you.”
+        </blockquote>
+        <p class="mt-4 text-sm leading-relaxed text-cream-50/60">
+          Most agencies show you a portfolio. We hand you the running product and invite you to try
+          to break it.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── How we work ──────────────────────────────────── -->
+  <section class="container-x py-16">
+    <div class="max-w-prose" data-reveal>
+      <p class="eyebrow">How we work</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold text-ink-900 sm:text-4xl">
+        Transparent by default
+      </h2>
+    </div>
+    <div class="mt-10 grid gap-5 md:grid-cols-3">
+      {
+        beliefs.map((b) => (
+          <div class="card p-7" data-reveal>
+            <h3 class="font-display text-lg font-semibold text-ink-900">{b.title}</h3>
+            <p class="mt-2.5 text-sm leading-relaxed text-ink-600">{b.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- ── Who it's for ─────────────────────────────────── -->
+  <section class="container-x pb-16">
+    <div class="card grid gap-8 p-8 md:grid-cols-[1fr_1fr] md:p-10" data-reveal>
+      <div>
+        <p class="eyebrow">Who it's for</p>
+        <h2 class="mt-3 font-display text-2xl font-semibold text-ink-900">
+          Built for owner-professionals whose time is the bottleneck
+        </h2>
+        <p class="mt-3 text-sm leading-relaxed text-ink-600">
+          The real filter isn't your industry — it's the math. If each new customer is worth enough
+          that recovering a few missed inquiries a month covers the fee, the system fits.
+        </p>
+      </div>
+      <ul class="grid content-center gap-3">
+        {
+          who.map((w) => (
+            <li class="flex items-center gap-3 text-sm font-medium text-ink-800">
+              <span class="grid h-6 w-6 place-items-center rounded-full bg-cream-100 text-ink-900">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+                  <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+              {w}
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand />
+</Base>

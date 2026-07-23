@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# AI crawlers are explicitly welcomed — this site is built to be citable.
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+Sitemap: https://orkha.solutions/sitemap-index.xml

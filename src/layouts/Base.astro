@@ -1,0 +1,117 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/fraunces';
+import '../styles/global.css';
+
+import Seo from '../components/Seo.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE_URL, BUSINESS } from '../lib/site';
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown>[];
+}
+
+const { title, description, path, ogImage, noindex, schema = [] } = Astro.props;
+
+// Organisation node is available site-wide for graph references.
+const a = BUSINESS.address;
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  '@id': `${SITE_URL}/#organization`,
+  name: BUSINESS.legalName,
+  alternateName: BUSINESS.name,
+  url: SITE_URL,
+  telephone: BUSINESS.phoneDisplay,
+  email: BUSINESS.email,
+  foundingDate: BUSINESS.foundedYear,
+  priceRange: BUSINESS.priceRange,
+  sameAs: [BUSINESS.facebook],
+  areaServed: { '@type': 'Country', name: 'Philippines' },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: a.street,
+    addressLocality: a.city,
+    addressRegion: a.region,
+    addressCountry: a.countryCode,
+  },
+  logo: `${SITE_URL}/brand/orkha-icon.png`,
+  image: `${SITE_URL}/brand/orkha-wordmark.png`,
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Seo
+      title={title}
+      description={description}
+      path={path}
+      ogImage={ogImage}
+      noindex={noindex}
+      schema={[orgSchema, ...schema]}
+    />
+  </head>
+  <body class="flex min-h-screen flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-ink-800 focus:px-4 focus:py-2 focus:text-sm focus:text-cream-50"
+    >
+      Skip to content
+    </a>
+    <Header />
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Lightweight reveal-on-scroll. Respects prefers-reduced-motion.
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = document.querySelectorAll<HTMLElement>('[data-reveal]');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach((el) => el.classList.add('is-visible'));
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                (entry.target as HTMLElement).classList.add('is-visible');
+                io.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+
+    <style is:global>
+      [data-reveal] {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      [data-reveal].is-visible {
+        opacity: 1;
+        transform: none;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        [data-reveal] {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+      }
+    </style>
+  </body>
+</html>

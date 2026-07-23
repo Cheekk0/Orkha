@@ -1,0 +1,39 @@
+---
+// Research-backed context cards. Every figure carries its source.
+// These frame the *principle* behind speed-to-response — not a promise
+// of any client's specific results (see disclaimer in the calculator).
+const stats = [
+  {
+    figure: '21×',
+    claim: 'more likely to qualify a customer when you respond in 5 minutes vs 30.',
+    source: 'Lead Response Management Study — Dr. James Oldroyd, MIT / InsideSales, 2007',
+  },
+  {
+    figure: '78%',
+    claim: 'of customers buy from the business that responds to them first.',
+    source: 'Lead Connect, 2024',
+  },
+  {
+    figure: '52%',
+    claim: 'of inquiries arrive outside normal business hours.',
+    source: 'HubSpot',
+  },
+  {
+    figure: '42 hrs',
+    claim: 'was the average time businesses took to respond to a web inquiry — and 23% never replied.',
+    source: 'Harvard Business Review, “The Short Life of Online Sales Leads,” 2011',
+  },
+];
+---
+
+<div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+  {
+    stats.map((s) => (
+      <div class="card flex flex-col p-5" data-reveal>
+        <span class="font-display text-4xl font-semibold text-ink-800 tabular">{s.figure}</span>
+        <p class="mt-2 text-sm leading-relaxed text-ink-700">{s.claim}</p>
+        <p class="mt-auto pt-3 text-[11px] leading-snug text-ink-500">{s.source}</p>
+      </div>
+    ))
+  }
+</div>
