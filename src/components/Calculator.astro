@@ -33,17 +33,17 @@
           </p>
         </div>
 
-        <!-- 2. monthly inquiries -->
+        <!-- 2. daily inquiries -->
         <div>
           <div class="flex items-baseline justify-between gap-3">
             <label for="c-leads" class="text-sm font-semibold text-ink-800">
-              Inquiries you get per month
+              Inquiries you get per day
             </label>
-            <output id="out-leads" class="tabular text-sm font-semibold text-ink-700">40</output>
+            <output id="out-leads" class="tabular text-sm font-semibold text-ink-700">2</output>
           </div>
-          <input id="c-leads" type="range" min="5" max="500" step="5" value="40" class="range mt-3" />
+          <input id="c-leads" type="range" min="1" max="20" step="1" value="2" class="range mt-3" />
           <p class="mt-1.5 text-xs text-ink-500">
-            Messages, DMs and form fills — everyone who reaches out.
+            Messages, DMs and form fills — everyone who reaches out. Assumes a 30-day month.
           </p>
         </div>
 
@@ -220,7 +220,7 @@
     // state
     const state = {
       V: 10000,
-      L: 40,
+      L: 60, // 2/day × 30-day month
       C: 0.2,
       website: 0, // 0 = no website
       speed: 0, // 0 = not instant
@@ -288,8 +288,9 @@
       compute();
     });
     cLeads?.addEventListener('input', () => {
-      state.L = +cLeads.value;
-      const o = $('out-leads'); if (o) o.textContent = String(state.L);
+      const daily = +cLeads.value;
+      state.L = daily * 30; // convert to a 30-day month for the formula
+      const o = $('out-leads'); if (o) o.textContent = String(daily);
       compute();
     });
     cClose?.addEventListener('input', () => {
