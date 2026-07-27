@@ -39,7 +39,7 @@ const futureAddons = [
 ];
 
 const compare = [
-  { row: 'Monthly rate', now: '₱30,000 (first 3 months)', later: '₱60,000' },
+  { row: 'Monthly rate', now: '₱30,000 (until +50% booked appointments)', later: '₱45,000' },
   { row: 'Founding batch', now: 'First 5 clients only', later: 'Standard pricing' },
   { row: 'Future Add-Ons after month 6', now: 'Free, forever, at your locked rate', later: 'Paid, item by item' },
   { row: 'Lock-in', now: 'None — month-to-month', later: 'None — month-to-month' },
@@ -77,7 +77,8 @@ const compare = [
           <span class="mb-1.5 text-sm text-ink-500">/ month</span>
         </div>
         <p class="mt-2 text-sm text-ink-600">
-          For your <strong>first 3 months</strong>, then ₱60,000/month. Offered to the first
+          Then ₱45,000/month — but only once you've booked a <strong>50% increase in booked
+          appointments</strong> compared to your prior 3 months. Offered to the first
           <strong>5 clients</strong> only, while we're in our pilot phase.
         </p>
         <ul class="mt-6 space-y-2.5">
@@ -104,12 +105,13 @@ const compare = [
       <div class="rounded-xl2 border border-line bg-paper p-8" data-reveal>
         <p class="eyebrow">Standard</p>
         <div class="mt-4 flex items-end gap-2">
-          <span class="font-display text-5xl font-semibold text-ink-800 tabular">₱60,000</span>
+          <span class="font-display text-5xl font-semibold text-ink-800 tabular">₱45,000</span>
           <span class="mb-1.5 text-sm text-ink-500">/ month</span>
         </div>
         <p class="mt-2 text-sm text-ink-600">
           Ongoing, month-to-month, no long-term lock-in. The full system, maintained — this is the
-          rate once the founding batch closes.
+          rate once the founding batch closes, or once a founding client hits the 50% booked-appointment
+          increase that graduates them off the founding rate.
         </p>
         <ul class="mt-6 space-y-2.5">
           {

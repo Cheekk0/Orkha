@@ -16,14 +16,14 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Orkha has no clients or case studies yet — why would I be one of the first?",
-    a: "Because being early is the discount. Orkha is in its pilot phase, so the first 5 clients get the founding rate of ₱30,000/month (half of the ₱60,000 standard rate) for their first 3 months, plus every Future Add-On free, forever, at that locked rate once they stay past month 6. We're openly pricing in the fact that we're new. Later clients pay full price and pay for each add-on individually. We're also prepared to overdeliver early so those first results become the case studies we don't have yet.",
+    a: "Because being early is the discount. Orkha is in its pilot phase, so the first 5 clients get the founding rate of ₱30,000/month, moving to the ₱45,000 standard rate only once you've booked a 50% increase in booked appointments compared to your prior 3 months — plus every Future Add-On free, forever, at that locked rate once they stay past month 6. We're openly pricing in the fact that we're new. Later clients pay full price and pay for each add-on individually. We're also prepared to overdeliver early so those first results become the case studies we don't have yet.",
   },
   {
     q: 'Will this actually work for a business like mine?',
     a: "The system's job is to catch the inquiries currently slipping through — the messages that arrive after hours, on weekends, or while you're with a client and can't reply. You don't have to take our word for it: every inquiry the AI captures lands in a Google Sheet you own and can watch in real time, so you're reading the meter yourself. It's best suited to appointment-driven service businesses where each new customer is worth enough that recovering a few missed inquiries a month covers the fee.",
   },
   {
-    q: "₱30,000 to ₱60,000 a month is expensive — someone could build me a website for ₱10,000. Why the difference?",
+    q: "₱30,000 to ₱45,000 a month is expensive — someone could build me a website for ₱10,000. Why the difference?",
     a: "A one-time ₱10,000 website is a brochure: it's built once and then nobody is answering your messages at 9 PM or qualifying inquiries while you work. Orkha isn't a website — it's a rented, always-on system: a fast website, continuous SEO/GEO, and AI that answers and qualifies inquiries 24/7, all maintained for you. You're comparing a one-time file to a system that runs every day. If your average customer is worth a meaningful amount, the system pays for itself the moment it catches one or two inquiries a month you'd otherwise lose.",
   },
   {
@@ -32,7 +32,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'Why should I sign up now instead of waiting?',
-    a: "Orkha's founding rate is ₱30,000/month for your first 3 months versus the ₱60,000 standard rate later, and pilots who stay past month 6 get every Future Add-On we launch included free, forever, at their locked rate — later clients pay full price for each one. The founding batch is limited to the first 5 clients. Waiting costs you the discount and the free-add-ons window; there's no artificial countdown, just a real cap.",
+    a: "Orkha's founding rate is ₱30,000/month, moving to the ₱45,000 standard rate only once you've booked a 50% increase in booked appointments compared to your prior 3 months, and pilots who stay past month 6 get every Future Add-On we launch included free, forever, at their locked rate — later clients pay full price for each one. The founding batch is limited to the first 5 clients. Waiting costs you the discount and the free-add-ons window; there's no artificial countdown, just a real cap.",
   },
   {
     q: "We're already doing fine without this — why change anything?",
