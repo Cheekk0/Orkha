@@ -1,0 +1,267 @@
+---
+// Concept homepage work — seven industries, seven brand archetypes.
+// These are demonstration designs (fictional businesses), shown to illustrate
+// the archetype-driven approach — not real client case studies. Framed as
+// concepts on purpose, since the brand is openly pre-first-client.
+
+interface Concept {
+  brand: string; // short label used in the mock nav
+  company: string; // full name in the analysis
+  domain: string;
+  nav: string[];
+  headline: string;
+  sub: string;
+  cta: string;
+  industry: string;
+  archetype: string;
+  positioning: string;
+  voice: string;
+  signature: string;
+  guardrail: string;
+  // Per-concept palette — each homepage carries its own colour + type, on purpose.
+  bg: string;
+  text: string;
+  accent: string;
+  serif: boolean; // headline typeface: Fraunces (serif) vs Inter (sans)
+  upper?: boolean; // uppercase, heavier hero (Hero/Everyman registers)
+}
+
+const concepts: Concept[] = [
+  {
+    brand: 'HELIOS SOLAR',
+    company: 'Helios Solar',
+    domain: 'helios-solar.ph',
+    nav: ['How it works', 'Savings', 'Systems', 'FAQ'],
+    headline: 'What will solar actually save you? Get the number in two minutes.',
+    sub: "Enter last month's bill. We show the system size, the payback period, and the arithmetic behind both — before anyone calls you.",
+    cta: 'Calculate my savings',
+    industry: 'Solar installer',
+    archetype: 'The Sage · Expert',
+    positioning:
+      'A six-figure purchase nobody understands. Transparency is the differentiator: publish the maths, publish the price, let the customer arrive at the decision themselves.',
+    voice: 'Calm and generous. Quantified claims, no superlatives.',
+    signature: 'Live savings calculator above the fold; methodology link beside the CTA.',
+    guardrail: 'Real figures, comparison table, deep FAQ as a knowledge base.',
+    bg: '#fffaf0',
+    text: '#3f2d12',
+    accent: '#b45309',
+    serif: true,
+  },
+  {
+    brand: 'Northbay Dental',
+    company: 'Northbay Family Dental',
+    domain: 'northbayfamilydental.ph',
+    nav: ['Meet the team', 'Your first visit', 'Services'],
+    headline: "Dental care that doesn't feel like a chore.",
+    sub: 'Nervous about the dentist? Most of our patients were too. We talk everything through first — what we can see, what it costs, what happens next. Nothing starts until you say so.',
+    cta: 'Book a first visit',
+    industry: 'Dental clinic',
+    archetype: 'The Caregiver',
+    positioning:
+      'Patients arrive anxious, often ashamed. The first job of the page is to lower the heart rate — reassurance before information, faces before facilities.',
+    voice: "Warm, plain, unhurried. 'You' outnumbers 'we.' Jargon always translated.",
+    signature: "'What happens on your first visit' — near-mandatory for this archetype.",
+    guardrail: 'No equipment-first copy, and never guilt. Soft CTA with a reassurance line under it.',
+    bg: '#f0fdfa',
+    text: '#134e4a',
+    accent: '#0d9488',
+    serif: false,
+  },
+  {
+    brand: 'MERIDIAN',
+    company: 'Meridian Detail',
+    domain: 'meridian-detail.co',
+    nav: ['The work', 'Process', 'Coatings', 'Journal'],
+    headline: 'Measured, cut and wrapped by hand.',
+    sub: 'No pre-cut kits. Every panel is templated on the car in front of us, and the paint goes through three stages of correction before the film is ever unrolled.',
+    cta: 'See the work',
+    industry: 'Auto detailing',
+    archetype: 'The Creator · Craftsman',
+    positioning:
+      'The customer is buying the work, not just the result. Process is the sales argument, so the site is built like a portfolio book — imagery large, copy specific and sensory.',
+    voice: 'Considered and material. Named techniques, real numbers. Zero hype words.',
+    signature: "Numbered process section; before/after framed as 'stage 1 → stage 3,' not shock.",
+    guardrail: 'Lead time stated plainly, never apologised for. Every note lands on a benefit.',
+    bg: '#f5f5f4',
+    text: '#1c1917',
+    accent: '#111827',
+    serif: true,
+  },
+  {
+    brand: 'Delgado Aircon',
+    company: 'Delgado Aircon & Ref',
+    domain: 'delgado-aircon.ph',
+    nav: ['Services', 'Areas', 'Reviews'],
+    headline: 'Your neighbourhood aircon guys — since 2011.',
+    sub: "Same family, same shop, same two vans. We'll quote you straight, and if we're slammed this week we'll say so instead of stringing you along.",
+    cta: 'Book a service',
+    industry: 'HVAC contractor',
+    archetype: 'The Everyman · Neighbour',
+    positioning:
+      "The moat is word of mouth, not credentials. Familiar layout on purpose — cleverness creates distance. The owner's actual voice beats polished boilerplate.",
+    voice: 'Conversational and local. Contractions, neighbourhood names, honest about limits.',
+    signature: 'Phone number in the header, review-heavy proof with names and barangays.',
+    guardrail: "One sharp reason-to-choose beyond 'we're nice' — relatable drifts into forgettable.",
+    bg: '#eff6ff',
+    text: '#1e3a5f',
+    accent: '#2563eb',
+    serif: false,
+  },
+  {
+    brand: 'IRONCREST',
+    company: 'Ironcrest Roofing',
+    domain: 'ironcrest-roofing.ph',
+    nav: ['Repairs', 'Replacement', 'Storm damage'],
+    headline: "Roof leaking? We're on it today.",
+    sub: 'Emergency tarping within four hours across Zambales and Bataan. Full inspection, photographed, priced on the spot — fixed right or we come back free.',
+    cta: 'Get a quote in 60 seconds',
+    industry: 'Roofing',
+    archetype: 'The Hero',
+    positioning:
+      'A broken thing, a worried owner, and a decision made in minutes. The page sells relief: bold claim, hard number, hard CTA, all above the fold.',
+    voice: 'Direct, present tense, action verbs first. Numbers instead of adjectives.',
+    signature: 'Stat counters and a before/after slider; clickable phone number, repeated CTAs.',
+    guardrail: 'Every bold claim gets a number, photo or guarantee within one scroll. No scare tactics.',
+    bg: '#fef2f2',
+    text: '#7f1d1d',
+    accent: '#dc2626',
+    serif: false,
+    upper: true,
+  },
+  {
+    brand: 'AURELIO & PARTNERS',
+    company: 'Aurelio & Partners',
+    domain: 'aureliopartners.ph',
+    nav: ['Portfolio', 'Advisory', 'The firm', 'Enquiries'],
+    headline: "Serving Manila's leading families since 2009.",
+    sub: 'Private residential advisory. By introduction.',
+    cta: 'Request a consultation',
+    industry: 'Real estate broker',
+    archetype: 'The Ruler · Authority',
+    positioning:
+      'Sells certainty and status to buyers who are themselves successful. Leadership is stated as fact, never argued for. Restraint is the entire mechanism.',
+    voice: 'Declarative and measured. No exclamation marks, no urgency, no discount language.',
+    signature: 'Symmetrical grid, one CTA, credentials bar, few but weighty attributed testimonials.',
+    guardrail: 'Density signals desperation. Needs real proof — without it, the tone reads as bluffing.',
+    bg: '#faf9f7',
+    text: '#1e293b',
+    accent: '#8a6d3b',
+    serif: true,
+  },
+  {
+    brand: 'CASA VERDE',
+    company: 'Casa Verde Design + Build',
+    domain: 'casaverde.build',
+    nav: ['Projects', 'How we work', 'Materials'],
+    headline: 'Old houses, made right.',
+    sub: 'One house at a time. Twelve weeks, one crew, one site manager whose number you actually have. We draw before we demolish, and the material list is yours on day one.',
+    cta: 'Commission a walkthrough',
+    industry: 'Renovations',
+    archetype: 'The Creator · Craftsman',
+    positioning:
+      'Same archetype as Meridian, different register — proof that the psychology, not the palette, is what transfers. Renovation buyers fear chaos, so the craft story is also a control story.',
+    voice: 'Specific and material. Named quantities and techniques do the persuading, not adjectives.',
+    signature: 'Editorial asymmetric grid; a single project told properly beats a grid of thumbnails.',
+    guardrail: 'Every process detail lands on a customer outcome, or it becomes perfectionist noise.',
+    bg: '#f7f8f2',
+    text: '#365314',
+    accent: '#4d7c0f',
+    serif: true,
+  },
+];
+---
+
+<section id="work" class="bg-ink-900 py-20 text-cream-50">
+  <div class="container-x">
+    <div class="max-w-prose" data-reveal>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-cream-50/50">Selected concept work</p>
+      <h2 class="mt-3 font-display text-3xl font-semibold sm:text-4xl">
+        Seven industries, seven brand archetypes
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-cream-50/70">
+        Every homepage we design starts from a single brand archetype — the psychology drives the copy,
+        the palette, the typography and the page structure. These are concept designs, not a template
+        with the colours swapped. Here's the same craft across seven very different businesses.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 lg:grid-cols-2">
+      {
+        concepts.map((c, i) => (
+          <article class="overflow-hidden rounded-xl2 border border-cream-50/10 bg-white/5" data-reveal>
+            {/* ── Browser mock — carries the concept's own palette + type ── */}
+            <div class="p-4 sm:p-5">
+              <div class="overflow-hidden rounded-xl shadow-lift" style={`background:${c.bg};color:${c.text}`}>
+                {/* top chrome */}
+                <div class="flex items-center gap-3 px-3 py-2" style="background:rgba(0,0,0,0.04);border-bottom:1px solid rgba(0,0,0,0.06)">
+                  <div class="flex gap-1.5" aria-hidden="true">
+                    <span class="h-2 w-2 rounded-full" style="background:rgba(0,0,0,0.18)" />
+                    <span class="h-2 w-2 rounded-full" style="background:rgba(0,0,0,0.18)" />
+                    <span class="h-2 w-2 rounded-full" style="background:rgba(0,0,0,0.18)" />
+                  </div>
+                  <span class="truncate rounded-md px-2 py-0.5 text-[10px] tabular" style="background:rgba(0,0,0,0.05)">
+                    {c.domain}
+                  </span>
+                </div>
+                {/* site nav */}
+                <div class="flex items-center justify-between gap-3 px-4 pt-3 sm:px-5">
+                  <span class="text-[11px] font-semibold tracking-wide sm:text-xs" style={`color:${c.accent}`}>
+                    {c.brand}
+                  </span>
+                  <span class="hidden truncate text-[10px] opacity-60 sm:inline">{c.nav.join('   ·   ')}</span>
+                </div>
+                {/* hero */}
+                <div class="px-4 pb-6 pt-4 sm:px-5 sm:pb-7">
+                  <h3
+                    class={`${c.serif ? 'font-display' : 'font-sans'} ${c.upper ? 'uppercase tracking-tight' : ''} text-lg font-semibold leading-tight sm:text-2xl`}
+                  >
+                    {c.headline}
+                  </h3>
+                  <p class="mt-2 text-[11px] leading-relaxed opacity-75 sm:text-sm">{c.sub}</p>
+                  <span
+                    class="mt-4 inline-block rounded-full px-3.5 py-1.5 text-[11px] font-semibold text-white sm:text-xs"
+                    style={`background:${c.accent}`}
+                  >
+                    {c.cta}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Our analysis — Orkha's neutral styling ── */}
+            <div class="border-t border-cream-50/10 px-5 pb-6 pt-5">
+              <p class="text-[11px] font-semibold uppercase tracking-[0.16em] text-cream-50/40">
+                0{i + 1} / 07 · {c.industry}
+              </p>
+              <p class="mt-2 font-display text-lg font-semibold text-cream-50">
+                {c.company}
+                <span class="ml-1 text-sm font-normal text-cream-50/50">· {c.archetype}</span>
+              </p>
+              <p class="mt-2 text-sm leading-relaxed text-cream-50/70">{c.positioning}</p>
+              <dl class="mt-4 space-y-2 text-xs">
+                <div class="flex gap-3">
+                  <dt class="w-20 shrink-0 font-semibold uppercase tracking-wide text-cream-50/40">Voice</dt>
+                  <dd class="text-cream-50/70">{c.voice}</dd>
+                </div>
+                <div class="flex gap-3">
+                  <dt class="w-20 shrink-0 font-semibold uppercase tracking-wide text-cream-50/40">Signature</dt>
+                  <dd class="text-cream-50/70">{c.signature}</dd>
+                </div>
+                <div class="flex gap-3">
+                  <dt class="w-20 shrink-0 font-semibold uppercase tracking-wide text-cream-50/40">Guardrail</dt>
+                  <dd class="text-cream-50/70">{c.guardrail}</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <p class="mt-10 max-w-prose text-sm leading-relaxed text-cream-50/50" data-reveal>
+      Concept designs for illustration — the businesses above are demonstrations of the approach, not
+      past clients. The same thinking goes into every site we build, whether it's the managed system or
+      a one-time build.
+    </p>
+  </div>
+</section>

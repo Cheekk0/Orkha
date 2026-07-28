@@ -50,3 +50,11 @@ export const OFFER = {
   // in booked appointments vs. their prior 3 months — not a time-based trigger.
   jumpCondition: '+50% booked appointments vs. prior 3 months',
 } as const;
+
+// One-time website builds — a separate product from the managed monthly system.
+export const ONE_TIME = {
+  price: '₱15,000',
+  timeframe: '6 days',
+  revisions: 2,
+  payment: '50% down to start, 50% on completion',
+} as const;
