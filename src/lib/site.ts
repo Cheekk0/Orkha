@@ -27,7 +27,7 @@ export const BUSINESS = {
     countryCode: 'PH',
   },
   serviceArea: 'Nationwide (digital service), based in San Pedro, Laguna',
-  priceRange: '₱15,000 – ₱20,000 / month',
+  priceRange: '₱15,000 – ₱25,000 / month',
 } as const;
 
 export const NAV = [
@@ -43,7 +43,7 @@ export const TIMEFRAME = '6–12 days';
 
 // Founding-batch details (Brief.MD)
 export const OFFER = {
-  standard: '₱20,000',
+  standard: '₱25,000',
   founding: '₱15,000',
   foundingSlots: 5,
   // Founding rate jumps to standard once we've grown the potential customers

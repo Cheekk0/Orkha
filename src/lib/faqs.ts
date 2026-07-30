@@ -16,7 +16,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: "Orkha has no clients or case studies yet — why would I be one of the first?",
-    a: "Because being early is the discount. Orkha is in its pilot phase, so the first 5 clients get the founding rate of ₱15,000/month for the service, moving to the ₱20,000 standard rate only once we've grown the potential customers we capture for you by 50% over the past 3 months — plus your website (a ₱15,000 build) included free, and every Future Add-On free, forever, at that locked rate once they stay past month 6. We're openly pricing in the fact that we're new. Later clients pay full price and pay for each add-on individually. We're also prepared to overdeliver early so those first results become the case studies we don't have yet.",
+    a: "Because being early is the discount. Orkha is in its pilot phase, so the first 5 clients get the founding rate of ₱15,000/month for the service, moving to the ₱25,000 standard rate only once we've grown the potential customers we capture for you by 50% over the past 3 months — plus your website (a ₱15,000 build) included free, and every Future Add-On free, forever, at that locked rate once they stay past month 6. We're openly pricing in the fact that we're new. Later clients pay full price and pay for each add-on individually. We're also prepared to overdeliver early so those first results become the case studies we don't have yet.",
   },
   {
     q: 'Will this actually work for a business like mine?',
@@ -32,7 +32,7 @@ export const FAQS: Faq[] = [
   },
   {
     q: 'Why should I sign up now instead of waiting?',
-    a: "Orkha's founding rate is ₱15,000/month for the service, moving to the ₱20,000 standard rate only once we've grown the potential customers we capture for you by 50% over the past 3 months, and pilots who stay past month 6 get every Future Add-On we launch included free, forever, at their locked rate — later clients pay full price for each one. Your website (a ₱15,000 build) is included free either way. The founding batch is limited to the first 5 clients. Waiting costs you the discount and the free-add-ons window; there's no artificial countdown, just a real cap.",
+    a: "Orkha's founding rate is ₱15,000/month for the service, moving to the ₱25,000 standard rate only once we've grown the potential customers we capture for you by 50% over the past 3 months, and pilots who stay past month 6 get every Future Add-On we launch included free, forever, at their locked rate — later clients pay full price for each one. Your website (a ₱15,000 build) is included free either way. The founding batch is limited to the first 5 clients. Waiting costs you the discount and the free-add-ons window; there's no artificial countdown, just a real cap.",
   },
   {
     q: "We're already doing fine without this — why change anything?",
